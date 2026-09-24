@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #15111f;
+  --panel: #1d1829;
+  --line: #2c2540;
+  --text: #eeeaf6;
+  --muted: #8f88a6;
+  --narr: #ff5da8;
+  --flow: #3fe0c5;
+  --warn: #ffb44a;
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--flow);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@keyframes hit {
+  0% { text-shadow: 0 0 0 transparent; color: #fff; }
+  30% { text-shadow: 0 0 18px var(--narr); color: var(--narr); }
+  100% { text-shadow: 0 0 6px color-mix(in srgb, var(--narr) 50%, transparent); color: var(--narr); }
+}
+.term-hit { animation: hit 1.4s ease-out both; }
+
+@keyframes arrive {
+  from { background: color-mix(in srgb, var(--narr) 18%, transparent); }
+  to { background: transparent; }
+}
+.row-new { animation: arrive 2.5s ease-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  .term-hit, .row-new { animation: none; }
+  .term-hit { color: var(--narr); }
+}
